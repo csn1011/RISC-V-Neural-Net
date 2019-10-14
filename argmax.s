@@ -18,6 +18,7 @@ add t0, x0, x0
 lw t1, 0(a0)
 addi a0, a0, 4
 addi a1, a1, -1
+add t3, x0, x0
 
 loop_start:
 lw t2, 0(a0)

@@ -15,23 +15,24 @@
 dot:
 
     # Prologue
-
+add t2, x0, x0
 
 loop_start:
-
-
-
-
-
-
-
-
-
-
-
+lw, t0, 0(a0)
+addi t4, x0, 4
+mul t4, t4, a3
+add a0, a0, t4
+lw t1, 0(a1)
+addi t4, x0, 4
+mul t4, t4, a4
+add a1, a1, t4
+mul t3, t0, t1
+add t2, t3, t2
+addi a2, a2, -1
 
 loop_end:
-
+bne a2, x0, loop_start
+add a0, t2, x0
 
     # Epilogue
 

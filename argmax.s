@@ -14,24 +14,31 @@
 argmax:
 
     # Prologue
-
+add t0, x0, x0
+lw t1, 0(a0)
+addi a0, a0, 4
+addi a1, a1, -1
 
 loop_start:
-
-
-
-
+lw t2, 0(a0)
+blt t1, t2, loop_continue
+addi a0, a0, 4
+addi a1, a1, -1
+addi t3, t3, 1
+j loop_end
 
 
 
 
 loop_continue:
-
-
-
+add t1, x0, t2
+addi t3, t3, 1
+add t0, x0, t3
+addi a0, a0, 4
+addi a1, a1, -1
 loop_end:
-    
-
+bne a1, x0, loop_start
+add a0, t0, x0
     # Epilogue
 
 

@@ -61,6 +61,7 @@ add a2, s3, x0
 
 inner_loop_start:
 
+add a4, s6, x0
 remu a1, s11, s6
 addi t0, x0, 4
 mul a1, t0, a1
@@ -77,7 +78,7 @@ add a0, s1, t0
 addi a3, x0, 1
 add a2, s3, x0
 
-bne s11, s3, inner_loop_start
+bne s11, s6, inner_loop_start
 
 inner_loop_end:
 
@@ -86,7 +87,7 @@ addi s9, s9, 1
 
 outer_loop_end:
 
-bne s9, s3, outer_loop_start
+bne s9, s2, outer_loop_start
 
 
     # Epilogue

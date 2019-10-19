@@ -20,14 +20,62 @@
 write_matrix:
 
     # Prologue
+addi sp, sp, -16 #save a0, a1, a2, a3
+sw a0, 0(sp)
+sw a1, 4(sp)
+sw a2, 8(sp)
+sw a3, 12(sp)
+
+add a1, a0, x0 #set a1 to filename
+addi a2, x0, 1 #set permission to write
+
+addi sp, sp, -4 #save ra call fopen
+sw ra,0(sp)
+jal fopen
+lw ra,0(sp)
+addi sp, sp, 4
+
+addi, t4, x0, -1
+beq a0, t4, eof_or_error    #make sure file opened
+
+addi sp, sp, -4   #save fopen output
+sw a0, 0(sp)
+
+lw t0, 12(sp)
+lw t1, 16(sp)
+mul t0, t1, t0 #set t0 to rows*columns
+addi t0, t0, 2 #set t0 to rows*columns+2
+
+lw a1 0(sp) #load fopen output to a1
+lw a2 8(sp) #load write buffer to a2
+add a3, x0, t0 #set number of elems to t0
+addi a4, x0, 4 #set bytes to 4
+
+addi sp, sp, -4 #save ra call fopen
+sw ra,0(sp)
+jal fwrite
+lw ra,0(sp)
+addi sp, sp, 4
+
+lw t0, 12(sp)
+lw t1, 16(sp)
+mul t0, t1, t0 #set t0 to rows*columns
+addi t0, t0, 2 #set t0 to rows*columns+2
+
+bne a0, t0, eof_or_error    #make sure correct number written
+
+lw a1 0(sp) #load fopen output to a1
+addi sp, sp, -4 #save ra call fclose
+sw ra,0(sp)
+jal fclose
+lw ra,0(sp)
+addi sp, sp, 4
+
+addi, t4, x0, -1
+beq a0, t4, eof_or_error    #make sure file closed
 
 
-
-
-
-
-
-
+addi sp, sp, 20
 
     # Epilogue
 

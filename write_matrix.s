@@ -72,6 +72,9 @@ jal fwrite
 lw ra,0(sp)
 addi sp, sp, 4
 
+addi t0, x0, 2 #set t0 to rows*columns
+bne a0, t0, eof_or_error    #make sure correct number written
+
 #on to actual matrix
 
 
@@ -81,7 +84,6 @@ addi sp, sp, 4
 lw t0, 16(sp)
 lw t1, 20(sp)
 mul t0, t1, t0 #set t0 to rows*columns
-addi t0, t0, 2 #set t0 to rows*columns+2
 
 lw a1 0(sp) #load fopen output to a1
 lw a2 12(sp) #load write buffer to a2
@@ -97,7 +99,6 @@ addi sp, sp, 4
 lw t0, 16(sp)
 lw t1, 20(sp)
 mul t0, t1, t0 #set t0 to rows*columns
-addi t0, t0, 2 #set t0 to rows*columns+2
 
 bne a0, t0, eof_or_error    #make sure correct number written
 

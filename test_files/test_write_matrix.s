@@ -2,7 +2,7 @@
 .import ../utils.s
 
 .data
-m0: .word 1, 2, 3, 4, 5, 6, 7, 8, 9 # MAKE CHANGES HERE
+m0: .word 2, 1, 6 # MAKE CHANGES HERE
 file_path: .asciiz "test_output.bin"
 
 .text
@@ -11,7 +11,7 @@ main:
 la a0, file_path
 la a1, m0
 addi, a2, x0, 3
-addi, a3, x0, 3
+addi, a3, x0, 1
 jal ra, write_matrix
     # Exit the program
     addi a0 x0 10

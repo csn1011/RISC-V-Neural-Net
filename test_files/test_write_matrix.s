@@ -2,7 +2,7 @@
 .import ../utils.s
 
 .data
-m0: .word 3, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9 # MAKE CHANGES HERE
+m0: .word 1, 2, 3, 4, 5, 6, 7, 8, 9 # MAKE CHANGES HERE
 file_path: .asciiz "test_output.bin"
 
 .text

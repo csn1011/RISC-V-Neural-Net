@@ -23,7 +23,7 @@ main:
     # Exit if incorrect number of command line args
 addi t0, x0, 5
 bne t0, a0, wrong_args
-lw t0, 20(a1)
+lw t0, 16(a1)
 
 
 
